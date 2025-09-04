@@ -24,7 +24,6 @@ public class Transformations : MonoBehaviour
     public float rotationSpeed = 5f;
     public Vector3 rotationVector = new Vector3(1, 1, 1);
 
-    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -37,8 +36,6 @@ public class Transformations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rotationSpeed = rotationSpeed * UnityEngine.Random.Range(-2, 2);
-
         {
             for (int i = 0, z = 0; z < createGrid.gridResolution; z++)
             {
@@ -48,7 +45,7 @@ public class Transformations : MonoBehaviour
                     {
                         createGrid.grid[i].localPosition = startPos[i] + Vector3.up * Mathf.Sin(Time.time * moveFrequency + moveOffset) * moveAmplitude;
 
-                        createGrid.grid[i].localScale = startScale * Mathf.Sin(Time.time * scaleFrequency) * scaleAmplitude + Vector3.one * scaleOffset;
+                        createGrid.grid[i].localScale = startScale * Mathf.Cos(Time.time * scaleFrequency) * scaleAmplitude + Vector3.one * scaleOffset;
 
                         createGrid.grid[i].Rotate(rotationVector * Time.deltaTime * rotationSpeed * UnityEngine.Random.Range(-20, 20));
                     }
