@@ -1,0 +1,45 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RayCastManipulator : MonoBehaviour
+{
+
+
+    public int numRaycasts;
+
+    CreateGrid createGrid;
+    List<GameObject> hitCubes = new List<GameObject>();
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        createGrid = GetComponent<CreateGrid>();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (hitCubes.Count == createGrid.grid.Length)
+        {
+            foreach (GameObject cube in hitCubes)
+            {
+                cube.SetActive(true);
+            }
+            hitCubes = new List<GameObject>();
+        }
+
+        Vector3 cubeCenter = createGrid.grid[0].localPosition + new Vector3(createGrid.gridResolution / 2, createGrid.gridResolution / 2, createGrid.gridResolution / 2);
+        for (int i = 0; i < numRaycasts; i++)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(cubeCenter, Random.onUnitSphere, out hit, 100))
+            {
+                Debug.Log("hey");
+                //Debug.DrawRay(cubeCenter, Random.onUnitSphere * hit.distance, Color.red,1);
+                hit.transform.gameObject.SetActive(false);
+                hitCubes.Add(hit.transform.gameObject);
+            }
+        }
+    }
+}
