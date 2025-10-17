@@ -41,8 +41,8 @@ Material:
     - _Alpha_Clipping: 0
     - _Cutoff: 1
     - _GlowThicc: 0
-    - _NoiseScale: 50
-    - _NoiseStrength: 0.5
+    - _NoiseScale: 0
+    - _NoiseStrength: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _TimeMult: 0.1
