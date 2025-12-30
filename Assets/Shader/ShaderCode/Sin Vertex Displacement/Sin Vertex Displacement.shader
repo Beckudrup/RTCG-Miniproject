@@ -38,7 +38,7 @@ Properties
             float3 _Axis;
             float4 _Color;
 
-            // Source: https://docs.unity3d.com/Packages/com.unity.shadergraph@7.1/manual/Combine-Node.html
+
             float4 Unity_Combine_float(float R, float G, float B, float A)
             {
                 return float4(R, G, B, A);
@@ -46,7 +46,7 @@ Properties
 
             v2f vert (appdata v)
             {
-                float time = _Speed * _Time * 200; // 200 = Magic number that aligns our speed with the shadergraph variant of this shader. :(
+                float time = _Speed * _Time * 200; 
 
                 // Wave
                 float4 sineWave = sin(time + v.vertex * _Frequency) * _Amplitude;
